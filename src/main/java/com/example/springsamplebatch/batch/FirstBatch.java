@@ -23,8 +23,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.Map;
 
-@Slf4j
 @Configuration
+@Slf4j
 @RequiredArgsConstructor
 public class FirstBatch {
 
