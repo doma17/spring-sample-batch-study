@@ -34,6 +34,7 @@ public class FirstBatch {
     private final BeforeRepository beforeRepository;
     private final AfterRepository afterRepository;
 
+
     @Bean
     public Job firstJob() {
         return new JobBuilder("firstJob", jobRepository)
@@ -66,13 +67,10 @@ public class FirstBatch {
 
     @Bean
     public ItemProcessor<BeforeEntity, AfterEntity> middleProcessor() {
-        return new ItemProcessor<BeforeEntity, AfterEntity>() {
-            @Override
-            public AfterEntity process(BeforeEntity item) throws Exception {
-                AfterEntity afterEntity = new AfterEntity();
-                afterEntity.setUsername(item.getUsername());
-                return afterEntity;
-            }
+        return item -> {
+            AfterEntity afterEntity = new AfterEntity();
+            afterEntity.setUsername(item.getUsername());
+            return afterEntity;
         };
     }
 
